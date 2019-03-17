@@ -8,7 +8,7 @@
             <p class="card-text">{!! $post->body !!} </p>
         </div>
         <div class="card-footer py-1">
-            <p class="card-text text-sm-left">Written on {{$post->created_at}}</p>
+            <p class="card-text text-sm-left">Written on {{$post->created_at}} by <b>{{$post->user->name}}</b></p>
             <a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit</a>
             {!! Form::open(['action' => ['PostsController@destroy', $post->id],
         'method' => 'POST', 'class' => 'd-inline'])!!}

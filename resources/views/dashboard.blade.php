@@ -13,8 +13,31 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a href="/posts/create" class="btn btn-primary">new post</a>
-                    <h3>Your Blog posts</h3>
+                    <h3 class="d-inline">Your Blog posts</h3>
+                    <a href="/posts/create" class="btn btn-primary mb-2 mt-n1 float-right">new post</a>
+                    @if(count($posts) > 0)
+                        <table class="table table-striped table-hover">
+                            <tr>
+                                <th>Title</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                            @foreach($posts as $post)
+                                <tr>
+                                    <td><a href="/posts/{{$post->id}}">{{ $post->title }}</a></td>
+                                    <td><a href="/posts/{{$post->id}}/edit" class="btn btn-warning">Edit</a></td>
+                                    <td>
+                                        {!! Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'd-inline'])!!}
+                                        {{Form::hidden('_method', 'DELETE')}}
+                                        {{Form::submit('Delete', ['class'=> 'btn btn-danger'])}}
+                                        {!! Form::close() !!}
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </table>
+                    @else
+                    <p>you do not have any posts....</p>
+                    @endif
                 </div>
             </div>
         </div>

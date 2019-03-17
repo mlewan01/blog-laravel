@@ -9,12 +9,16 @@
         </div>
         <div class="card-footer py-1">
             <p class="card-text text-sm-left">Written on {{$post->created_at}} by <b>{{$post->user->name}}</b></p>
-            <a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit</a>
-            {!! Form::open(['action' => ['PostsController@destroy', $post->id],
-        'method' => 'POST', 'class' => 'd-inline'])!!}
-            {{Form::hidden('_method', 'DELETE')}}
-            {{Form::submit('Delete', ['class'=> 'btn btn-danger'])}}
-            {!! Form::close() !!}
+            @if(!Auth::guest())
+                @if(Auth::user()->id == $post->user_id)
+                <a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit</a>
+                {!! Form::open(['action' => ['PostsController@destroy', $post->id],
+                    'method' => 'POST', 'class' => 'd-inline'])!!}
+                {{Form::hidden('_method', 'DELETE')}}
+                {{Form::submit('Delete', ['class'=> 'btn btn-danger'])}}
+                {!! Form::close() !!}
+                @endif
+            @endif
         </div>
     </div>
 

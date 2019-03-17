@@ -5,6 +5,7 @@
     <div class="card m-2">
         <div class="card-body py-3">
             <h3 class="card-title text-left"><a href="/posts/{{$post->id}}">{{ $post->title }}</a></h3>
+            <img style="width:100%" src="/storage/cover_images/{{$post->cover_image}}">
             <p class="card-text">{!! $post->body !!} </p>
         </div>
         <div class="card-footer py-1">

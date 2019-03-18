@@ -9,10 +9,10 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4 col-sm-4">
-                            <img style="width:100%" src="/storage/cover_images/{{$post->cover_image}}">
+                            <img style="width:100%" src="{{url("/storage/cover_images/".$post->cover_image)}}">
                         </div>
                         <div class="col-md-4 col-sm-4">
-                            <h3 class="card-title text-left"><a href="/posts/{{$post->id}}">{{ $post->title }}</a></h3>
+                            <h3 class="card-title text-left"><a href="{{ url("/posts/".$post->id) }}">{{ $post->title }}</a></h3>
                             <p class="card-text text-sm-left">Written on {{$post->created_at}} by <b>{{$post->user->name}}</b></p>
                         </div>
                     </div>

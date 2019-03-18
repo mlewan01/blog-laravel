@@ -17,6 +17,6 @@
 {{Form::hidden('_method', 'PUT')}}
 {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
 {!! Form::close() !!}
-<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+<script src="{{ url("/vendor/unisharp/laravel-ckeditor/ckeditor.js") }}"></script>
 <script>CKEDITOR.replace('article-editor');</script>
 @endsection
